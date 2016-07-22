@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,23 +25,37 @@ namespace ConsoleApplication1
         }
 
         [Test]
-        public void ExecuteTest()
+        public void LoginElement()
         {
-        IWebElement el_1 = driver.FindElement(By.Id("signIn"));
+            //Login Button
+            
+            IWebElement el_1 = driver.FindElement(By.Id("signIn"));
 
-        el_1.Click();
+            el_1.Click();
 
-        IWebElement el_2 = driver.FindElement(By.Id("email"));
-        IWebElement el_3 = driver.FindElement(By.Id("passwd"));
-        IWebElement el_4 = driver.FindElement(By.Id("login"));
+            driver.FindElement(By.Id("email"));
+            driver.FindElement(By.Id("passwd"));
 
-        el_4.Click();
+            // LoginEmptyFields
+
+            IWebElement el_2 = driver.FindElement(By.Id("login"));
+            el_2.Click();
+
+            driver.FindElement(By.ClassName("err-msg-wrapper"));
+
+            
         }
 
+        /*[Test]
+        public void LoginFailFields()
+        {
+            
+         }*/
+        
         [TearDown]
         public void Exit()
         {
-            driver.Close();
+            driver.Quit();
 
         }
             
