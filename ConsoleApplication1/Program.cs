@@ -28,18 +28,15 @@ namespace ConsoleApplication1
         public void LoginElement()
         {
             //Login Button
-            
-            IWebElement el_1 = driver.FindElement(By.Id("signIn"));
 
-            el_1.Click();
+            SeleniumActions.Click(driver, "signIn", "Id");
 
             driver.FindElement(By.Id("email"));
             driver.FindElement(By.Id("passwd"));
 
             // LoginEmptyFields
 
-            IWebElement el_2 = driver.FindElement(By.Id("login"));
-            el_2.Click();
+            SeleniumActions.Click(driver, "login", "Id");
 
             driver.FindElement(By.ClassName("err-msg-wrapper"));
 
